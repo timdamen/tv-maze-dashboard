@@ -18,7 +18,7 @@ export const useShowsStore = defineStore('shows', () => {
     try {
       const result = await fetchShows(page.value);
 
-      shows.value = shows.value.concat(result);
+      shows.value = result;
       page.value++;
 
       if (result.length === 0) {
