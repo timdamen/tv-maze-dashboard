@@ -24,7 +24,6 @@ const props = withDefaults(
 const itemsPerPage = ref<number>(3);
 const currentItem = ref<number>(0);
 
-const totalShows = computed(() => props.shows.length);
 const paginatedShows = computed(() => {
   return props.shows.slice(
     currentItem.value,
@@ -36,7 +35,7 @@ const setOffset = (offset: number): void => {
   if (offset < 0) {
     return;
   }
-  if (offset > totalShows.value) {
+  if (offset > props.shows.length) {
     return;
   }
 
@@ -50,7 +49,7 @@ const changeRoute = (route: string): void => {
 const canLoadMore = (): boolean => {
   return (
     props.canLoadMore &&
-    currentItem.value + itemsPerPage.value * 2 > totalShows.value
+    currentItem.value + itemsPerPage.value * 2 > props.shows.length
   );
 };
 </script>
@@ -119,7 +118,7 @@ const canLoadMore = (): boolean => {
 
     &-col,
     &-header {
-      border: 1px solid #ddd;
+      border: 1px solid var(--color-grey);
       padding: 8px;
     }
 
@@ -127,11 +126,11 @@ const canLoadMore = (): boolean => {
       cursor: pointer;
 
       &:nth-child(even) {
-        background-color: #f2f2f2;
+        background-color: var(--color-white);
       }
 
       &:hover {
-        background-color: #ddd;
+        background-color: var(--color-grey);
       }
     }
 

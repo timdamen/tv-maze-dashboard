@@ -6,7 +6,7 @@ import { Quasar } from 'quasar';
 import ShowsList from '../ShowsList.vue';
 
 describe('ShowsList', () => {
-  it('renders properly with shows', async () => {
+  it('renders properly with shows and can paginate to correct pages', async () => {
     const wrapper = mount(ShowsList, {
       props: {
         title: 'ShowsList',
@@ -574,7 +574,7 @@ describe('ShowsList', () => {
           {
             id: 5,
             url: 'https://www.tvmaze.com/shows/1/under-the-dome',
-            name: 'Under th',
+            name: 'Under the Sun',
             type: 'Scripted',
             language: 'English',
             genres: ['Drama', 'Science-Fiction', 'Thriller'],
@@ -698,13 +698,14 @@ describe('ShowsList', () => {
     const prevPageButton = wrapper.find('[data-test="prev-page"]');
 
     expect(wrapper.html()).toContain('Under the Star');
-    await nextPageButton.trigger('click');
-    expect(wrapper.html()).toContain('Under the Moon');
     await prevPageButton.trigger('click');
     expect(wrapper.html()).toContain('Under the Star');
-
-    const tableRow = wrapper.findAll('.shows__table-row')[1];
-    await tableRow.trigger('click');
+    await nextPageButton.trigger('click');
+    await nextPageButton.trigger('click');
+    await nextPageButton.trigger('click');
+    expect(wrapper.html()).toContain('Under the Sun');
+    await prevPageButton.trigger('click');
+    expect(wrapper.html()).toContain('Under the Bloom');
   });
 
   it('renders properly without shows', async () => {
