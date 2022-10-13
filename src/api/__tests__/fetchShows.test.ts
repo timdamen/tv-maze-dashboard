@@ -133,6 +133,7 @@ test('fetchShows() succes', async () => {
 test('fetchShows() failure', async () => {
   mockGet(`${Routes.apiShows}?page=undefined`).willFail();
 
+  // @ts-ignore because we want to test case without attributes given
   await expect(fetchShows()).rejects.toThrow('Internal Server Error');
 });
 
@@ -204,6 +205,7 @@ test('fetchShow() succes', async () => {
 test('fetchShow() failure', async () => {
   mockGet(`${Routes.apiShows}/undefined`).willFail();
 
+  // @ts-ignore because we want to test case without attributes given
   await expect(fetchShow()).rejects.toThrow('Internal Server Error');
 });
 
@@ -276,5 +278,6 @@ test('fetchSearchShows() succes', async () => {
 test('fetchSearchShows() failure', async () => {
   mockGet(`${Routes.apiSearchShows}?q=undefined`).willFail();
 
+  // @ts-ignore because we want to test case without attributes given
   await expect(fetchSearchShows()).rejects.toThrow('Internal Server Error');
 });

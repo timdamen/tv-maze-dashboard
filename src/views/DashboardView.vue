@@ -23,7 +23,7 @@ onMounted(async () => {
       v-model="search"
       placeholder="Search for a show"
       debounce="250"
-      @update:model-value="(search: string) => showSearchStore.searchShows(search as unknown as string)"
+      @update:model-value="(search) => showSearchStore.searchShows(search as string)"
     >
       <template v-slot:append>
         <q-icon v-if="search" name="clear" @click="search = ''" />
