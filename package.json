@@ -1,6 +1,7 @@
 {
   "name": "tv-maze-dashboard",
   "version": "0.0.0",
+  "author": "Tim Damen <hello@timdamen.io> (http://timdamen.io)",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
