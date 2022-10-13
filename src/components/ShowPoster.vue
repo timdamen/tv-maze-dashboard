@@ -8,7 +8,7 @@ defineProps<{
 <template>
   <figure class="poster">
     <img v-if="!!src" class="poster__img" :src="src" :alt="name" />
-    <figcaption v-else class="poster__name">{{ name }}</figcaption>
+    <figcaption v-else>{{ name }}</figcaption>
   </figure>
 </template>
 
