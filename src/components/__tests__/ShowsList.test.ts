@@ -29,7 +29,7 @@ describe('ShowsList', () => {
               days: ['Thursday'],
             },
             rating: {
-              average: 6.5,
+              average: null,
             },
             weight: 99,
             network: {
@@ -696,6 +696,9 @@ describe('ShowsList', () => {
 
     const nextPageButton = wrapper.find('[data-test="next-page"]');
     const prevPageButton = wrapper.find('[data-test="prev-page"]');
+
+    const tableCol = wrapper.findAll('.shows__table-col')[0];
+    await tableCol.trigger('click');
 
     expect(wrapper.html()).toContain('Under the Star');
     expect(wrapper.html()).toContain('6.5');
