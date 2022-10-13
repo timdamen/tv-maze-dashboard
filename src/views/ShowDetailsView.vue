@@ -45,19 +45,16 @@ onMounted(async () => {
       <ShowPoster :src="show.image?.medium" :name="show.name" />
       <p v-html="show.summary" />
 
-      <h2 class="text-h5">Genre</h2>
-      <span v-for="genre in show.genres" :key="genre" class="genre">{{
-        genre
-      }}</span>
+      <h2 class="text-h6">Genre</h2>
+      <q-badge
+        v-for="genre in show.genres"
+        :key="genre"
+        :label="genre"
+        class="q-mr-sm"
+      />
 
-      <h2 class="text-h5">Premiere</h2>
-      <span>{{ show.premiered }}</span>
-
-      <h2 class="text-h5">Language</h2>
-      <span>{{ show.language }}</span>
-
-      <h2 class="text-h5">Status</h2>
-      <span>{{ show.status }}</span>
+      <h2 class="text-h6">Rating</h2>
+      <span>{{ show.rating.average }}</span>
     </template>
   </section>
 </template>

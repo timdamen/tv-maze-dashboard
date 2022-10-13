@@ -698,11 +698,20 @@ describe('ShowsList', () => {
     const prevPageButton = wrapper.find('[data-test="prev-page"]');
 
     expect(wrapper.html()).toContain('Under the Star');
+    expect(wrapper.html()).toContain('6.5');
+    expect(wrapper.html()).toContain('Thriller');
+    expect(wrapper.html()).toContain('Drama');
+    expect(wrapper.html()).toContain('Science-Fiction');
+
     await prevPageButton.trigger('click');
     expect(wrapper.html()).toContain('Under the Star');
     await nextPageButton.trigger('click');
     await nextPageButton.trigger('click');
     await nextPageButton.trigger('click');
+    await nextPageButton.trigger('click');
+    await nextPageButton.trigger('click');
+    await nextPageButton.trigger('click');
+    await prevPageButton.trigger('click');
     expect(wrapper.html()).toContain('Under the Sun');
     await prevPageButton.trigger('click');
     expect(wrapper.html()).toContain('Under the Bloom');

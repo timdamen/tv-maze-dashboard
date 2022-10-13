@@ -55,6 +55,8 @@ const changeRoute = (route: string): void => {
       <tr class="shows__table-row">
         <th class="shows__table-header">Poster</th>
         <th class="shows__table-header">Title</th>
+        <th class="shows__table-header">Genre</th>
+        <th class="shows__table-header">Rating</th>
       </tr>
       <tr
         class="shows__table-row"
@@ -67,6 +69,17 @@ const changeRoute = (route: string): void => {
         </td>
         <td class="shows__table-col">
           {{ show.name }}
+        </td>
+        <td class="shows__table-col">
+          <q-badge
+            v-for="genre in show.genres"
+            :key="genre"
+            :label="genre"
+            class="q-mr-sm"
+          />
+        </td>
+        <td class="shows__table-col">
+          {{ show.rating.average ? show.rating.average : '-' }}
         </td>
       </tr>
     </table>

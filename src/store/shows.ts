@@ -34,9 +34,11 @@ export const useShowsStore = defineStore('shows', () => {
 
   const showsByGenre = computed(() => {
     return (genre: string) => {
-      return shows.value.filter((show) => {
-        return show.genres.includes(genre);
-      });
+      return shows.value
+        .sort((a, b) => b.rating.average - a.rating.average)
+        .filter((show) => {
+          return show.genres.includes(genre);
+        });
     };
   });
 
