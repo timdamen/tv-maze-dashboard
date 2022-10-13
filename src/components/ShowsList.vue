@@ -64,13 +64,16 @@ const changeRoute = (route: string): void => {
         :key="show.id"
         @click="changeRoute(`${Routes.show}/${show.id}`)"
       >
-        <td class="shows__table-col shows__table-col--small">
+        <td
+          class="shows__table-col shows__table-col--small"
+          data-column="Poster"
+        >
           <ShowPoster :src="show.image?.medium" :name="show.name" />
         </td>
-        <td class="shows__table-col">
+        <td class="shows__table-col" data-column="Title">
           {{ show.name }}
         </td>
-        <td class="shows__table-col">
+        <td class="shows__table-col" data-column="Genre">
           <q-badge
             v-for="genre in show.genres"
             :key="genre"
@@ -78,7 +81,7 @@ const changeRoute = (route: string): void => {
             class="q-mr-sm"
           />
         </td>
-        <td class="shows__table-col">
+        <td class="shows__table-col" data-column="Rating">
           {{ show.rating.average ? show.rating.average : '-' }}
         </td>
       </tr>
