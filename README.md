@@ -4,7 +4,7 @@ Used an open TV shows API http://www.tvmaze.com/api to create an application tha
 
 ## Architecture
 
-The app is created with Vue. I tried to stay in the Vue ecosystem when picking other packages.
+The app is created with Vue (mandatory). I tried to stay in the Vue ecosystem when picking other packages.
 * for statemanagement Pinia is used.
 * for component library Quasar is used.
 * for unit testing Vitest is used.
@@ -12,7 +12,7 @@ The app is created with Vue. I tried to stay in the Vue ecosystem when picking o
 To top it of a basic CI/CD sturcure is set up consisting of a Github workflow which runs a qualtiy ensurance pipeline and an automatic deployment to Vercel. Which will run when main is updated. 
 
 ## Test coverage
-![alt text](https://raw.githubusercontent.com/timdamen/tv-maze-dashboard/main/src/assets/screenshot-test-cov.png
+![test coverage screenshot](https://raw.githubusercontent.com/timdamen/tv-maze-dashboard/main/src/assets/screenshot-test-cov.png
 )
 
 ## Project Setup
@@ -44,4 +44,3 @@ yarn test:unit
 ```sh
 yarn lint
 ```
-
