@@ -29,7 +29,7 @@ describe('ShowsList', () => {
               days: ['Thursday'],
             },
             rating: {
-              average: null,
+              average: 0,
             },
             weight: 99,
             network: {
@@ -692,14 +692,14 @@ describe('ShowsList', () => {
       },
     });
 
-    expect(wrapper.text()).toContain('ShowsList');
-
     const nextPageButton = wrapper.find('[data-test="next-page"]');
     const prevPageButton = wrapper.find('[data-test="prev-page"]');
+    const tableCol = wrapper.findAll('.shows__table-col');
 
-    const tableCol = wrapper.findAll('.shows__table-col')[0];
-    await tableCol.trigger('click');
+    await tableCol[0].trigger('click');
 
+    expect(wrapper.text()).toContain('ShowsList');
+    expect(tableCol[3].text()).toEqual('-');
     expect(wrapper.html()).toContain('Under the Star');
     expect(wrapper.html()).toContain('6.5');
     expect(wrapper.html()).toContain('Thriller');
@@ -708,14 +708,17 @@ describe('ShowsList', () => {
 
     await prevPageButton.trigger('click');
     expect(wrapper.html()).toContain('Under the Star');
+
     await nextPageButton.trigger('click');
     await nextPageButton.trigger('click');
     await nextPageButton.trigger('click');
     await nextPageButton.trigger('click');
     await nextPageButton.trigger('click');
     await nextPageButton.trigger('click');
+
     await prevPageButton.trigger('click');
     expect(wrapper.html()).toContain('Under the Sun');
+
     await prevPageButton.trigger('click');
     expect(wrapper.html()).toContain('Under the Bloom');
   });
