@@ -15,11 +15,7 @@ defineProps<{
 <style lang="scss" scoped>
 .poster {
   &__img {
-    max-width: 75px;
-  }
-
-  &__name {
-    background-color: #ccc;
+    max-width: 100px;
   }
 }
 </style>

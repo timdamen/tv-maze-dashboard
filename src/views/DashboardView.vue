@@ -36,16 +36,15 @@ onMounted(async () => {
       :is-loading="showSearchStore.isLoading"
     />
 
-    <template v-else>
-      <ShowsList
-        v-for="genre in showsStore.genres"
-        :key="genre"
-        :title="genre"
-        :shows="showsStore.showsByGenre(genre)"
-        :can-load-more="showsStore.hasMoreShows"
-        :is-loading="showsStore.isLoading"
-        @load-more="showsStore.loadMoreShows"
-      />
-    </template>
+    <ShowsList
+      v-else
+      v-for="genre in showsStore.genres"
+      :key="genre"
+      :title="genre"
+      :shows="showsStore.showsByGenre(genre)"
+      :can-load-more="showsStore.hasMoreShows"
+      :is-loading="showsStore.isLoading"
+      @load-more="showsStore.loadMoreShows"
+    />
   </section>
 </template>
