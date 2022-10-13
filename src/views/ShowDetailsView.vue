@@ -37,7 +37,7 @@ onMounted(async () => {
     <q-btn to="/" flat color="primary" icon="arrow_back" label="Home" />
 
     <div v-if="isLoading">
-      <q-circular-progress indeterminate />
+      <q-circular-progress indeterminate rounded size="50px" class="q-ma-md" />
     </div>
 
     <template v-else-if="show">
