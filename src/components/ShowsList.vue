@@ -45,13 +45,6 @@ const setOffset = (offset: number): void => {
 const changeRoute = (route: string): void => {
   router.push(route);
 };
-
-const canLoadMore = (): boolean => {
-  return (
-    props.canLoadMore &&
-    currentItem.value + itemsPerPage.value * 2 > props.shows.length
-  );
-};
 </script>
 
 <template>
@@ -69,7 +62,7 @@ const canLoadMore = (): boolean => {
         :key="show.id"
         @click="changeRoute(`${Routes.show}/${show.id}`)"
       >
-        <td class="shows__table-col">
+        <td class="shows__table-col shows__table-col--small">
           <ShowPoster :src="show.image?.medium" :name="show.name" />
         </td>
         <td class="shows__table-col">
@@ -97,7 +90,10 @@ const canLoadMore = (): boolean => {
             () => {
               setOffset(currentItem + itemsPerPage);
 
-              if (canLoadMore()) {
+              if (
+                canLoadMore &&
+                currentItem + itemsPerPage >= props.shows.length
+              ) {
                 $emit('load-more');
               }
             }
@@ -111,14 +107,21 @@ const canLoadMore = (): boolean => {
 
 <style lang="scss" scoped>
 .shows {
+  @media (max-width: 767px) {
+    overflow: auto;
+  }
   &__table {
-    font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
 
+    @media (max-width: 767px) {
+      min-width: 600px;
+    }
+
     &-col,
     &-header {
-      border: 1px solid var(--color-grey);
+      border: 1px solid var(--color-gray);
+      border-color: var(--color-gray);
       padding: 8px;
     }
 
@@ -130,7 +133,7 @@ const canLoadMore = (): boolean => {
       }
 
       &:hover {
-        background-color: var(--color-grey);
+        background-color: var(--color-gray);
       }
     }
 
@@ -138,6 +141,14 @@ const canLoadMore = (): boolean => {
       padding-top: 12px;
       padding-bottom: 12px;
       text-align: left;
+    }
+
+    &-col {
+      height: 192px;
+
+      &--small {
+        width: 150px;
+      }
     }
   }
 
