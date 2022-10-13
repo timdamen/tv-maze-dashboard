@@ -1,0 +1,65 @@
+<script setup lang="ts">
+import { useRoute } from 'vue-router';
+import { onMounted, ref } from 'vue';
+
+import ShowPoster from '@/components/ShowPoster.vue';
+
+import type { Show } from '@/api/models';
+import { fetchShow } from '@/api/fetchShows';
+
+const route = useRoute();
+const id = route.params.id as unknown as number;
+
+const show = ref<Show | null>(null);
+const isLoading = ref(false);
+
+const loadShow = async () => {
+  isLoading.value = true;
+
+  try {
+    show.value = await fetchShow(id);
+  } catch (e) {
+    const err = e as Error;
+
+    console.error(err.message);
+  } finally {
+    isLoading.value = false;
+  }
+};
+
+onMounted(async () => {
+  loadShow();
+});
+</script>
+
+<template>
+  <section>
+    <q-btn to="/" flat color="primary" icon="arrow_back" label="Home" />
+
+    <div v-if="isLoading">
+      <q-circular-progress indeterminate />
+    </div>
+
+    <template v-else-if="show">
+      <h1 class="text-h4">{{ show.name }}</h1>
+      <ShowPoster :src="show.image?.medium" :name="show.name" />
+      <p v-html="show.summary" />
+
+      <h2 class="text-h5">Genre</h2>
+      <span v-for="genre in show.genres" :key="genre" class="genre">{{
+        genre
+      }}</span>
+
+      <h2 class="text-h5">Premiere</h2>
+      <span>{{ show.premiered }}</span>
+
+      <h2 class="text-h5">Language</h2>
+      <span>{{ show.language }}</span>
+
+      <h2 class="text-h5">Status</h2>
+      <span>{{ show.status }}</span>
+    </template>
+  </section>
+</template>
+
+<style lang="scss" scoped></style>

@@ -1,24 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '@/views/HomeView.vue';
+import DashboardView from '@/views/DashboardView.vue';
+import { Routes } from '@/constants/routes.constant';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: HomeView,
+      path: `${Routes.dashboard}`,
+      name: 'dashboard',
+      component: DashboardView,
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('@/views/AboutView.vue'),
-    },
-    {
-      path: '/:catchAll(.*)',
-      redirect: () => {
-        return '/';
-      },
+      path: `${Routes.show}/:id`,
+      name: 'show',
+      component: () => import('@/views/ShowDetailsView.vue'),
     },
   ],
 });
