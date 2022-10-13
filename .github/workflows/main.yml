@@ -67,5 +67,5 @@ jobs:
       - name: 📥 Download deps
         uses: bahmutov/npm-install@v1
 
-      - name: 🃏 Run jest
+      - name: 🃏 Run vitest
         run: yarn test:unit
