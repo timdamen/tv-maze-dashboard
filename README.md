@@ -9,6 +9,8 @@ The app is created with Vue. I tried to stay in the Vue ecosystem when picking o
 * for component library Quasar is used.
 * for unit testing Vitest is used.
 
+To top it of a basic CI/CD sturcure is set up consisting of a Github workflow which runs a qualtiy ensurance pipeline and a automatic deployment to Vercel. Which will run when main is updated. 
+
 ## Project Setup
 
 ```sh
