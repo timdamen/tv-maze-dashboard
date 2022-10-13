@@ -26,7 +26,12 @@ onMounted(async () => {
       @update:model-value="(search) => showSearchStore.searchShows(search as string)"
     >
       <template v-slot:append>
-        <q-icon v-if="search" name="clear" @click="search = ''" />
+        <q-icon
+          v-if="search"
+          name="clear"
+          @click="search = ''"
+          class="cursor-pointer"
+        />
       </template>
     </q-input>
 

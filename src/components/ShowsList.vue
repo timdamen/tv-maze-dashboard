@@ -49,7 +49,7 @@ const changeRoute = (route: string): void => {
 
 <template>
   <section class="shows">
-    <h1 class="text-h4">{{ title }}</h1>
+    <h1 class="text-h6">{{ title }}</h1>
 
     <table class="shows__table">
       <tr class="shows__table-row">
