@@ -9,7 +9,7 @@ The app is created with Vue (mandatory). I tried to stay in the Vue ecosystem wh
 * for component library Quasar is used.
 * for unit testing Vitest is used.
 
-To top it of a basic CI/CD sturcure is set up consisting of a Github workflow which runs a qualtiy ensurance pipeline and an automatic deployment to Vercel. Which will run when main is updated. 
+To top it of a basic CI/CD sturcure is set up consisting of a Github workflow which runs a quality ensurance pipeline and an automatic deployment to Vercel. Which will run when main is updated. 
 
 ## Test coverage
 ![test coverage screenshot](https://raw.githubusercontent.com/timdamen/tv-maze-dashboard/main/src/assets/screenshot-test-cov.png
